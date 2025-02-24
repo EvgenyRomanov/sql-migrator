@@ -12,7 +12,7 @@ import (
 	"strings"
 
 	"github.com/EvgenyRomanov/sql-migrator/internal/database"
-	_ "github.com/EvgenyRomanov/sql-migrator/internal/database/postgres"
+	_ "github.com/EvgenyRomanov/sql-migrator/internal/database/postgres" // Add pg support.
 	"github.com/EvgenyRomanov/sql-migrator/internal/logger"
 	"github.com/EvgenyRomanov/sql-migrator/internal/parser"
 )
@@ -54,7 +54,6 @@ func NewMigrator(dsn string, tableName string, dir string) (*Migrate, error) {
 
 	// Create table if it does not exist.
 	err = migrate.prepareDatabase()
-
 	if err != nil {
 		return nil, fmt.Errorf("can't initialize table: %w", err)
 	}
@@ -136,7 +135,7 @@ func (m *Migrate) Redo() error {
 	return m.unlock(nil)
 }
 
-func (m *Migrate) DbVersion() (int64, error) {
+func (m *Migrate) DBVersion() (int64, error) {
 	if err := m.lock(); err != nil {
 		return -1, err
 	}
@@ -212,7 +211,7 @@ func (m *Migrate) migrationsForRun(up bool, limit int) (Migrations, error) {
 		return make(Migrations, 0), err
 	}
 
-	var appliedVersions []int64
+	appliedVersions := make([]int64, 0)
 	for _, ap := range listAppliedMigrations {
 		appliedVersions = append(appliedVersions, ap.Version)
 	}
@@ -335,7 +334,6 @@ func (m *Migrate) findAvailableMigrations() (Migrations, error) {
 
 // Parse SQL migration file.
 func (m *Migrate) parseSQLMigration(info fs.FileInfo) (*Migration, error) {
-
 	file, err := http.Dir(m.dir).Open(path.Join("./", info.Name()))
 	if err != nil {
 		return nil, fmt.Errorf("error while opening %s: %w", info.Name(), err)
@@ -435,6 +433,6 @@ func (m *Migrate) unlock(prevError error) error {
 
 func (m *Migrate) printLog(msg string) {
 	if m.Log != nil {
-		m.Log.Info(msg)
+		m.Log.Info(msg) //nolint:govet
 	}
 }

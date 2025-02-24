@@ -1,0 +1,100 @@
+run:
+  tests: true
+  build-tags:
+    - bench
+    - !bench
+
+linters-settings:
+  funlen:
+    lines: 150
+    statements: 80
+  depguard:
+    rules:
+      Main:
+        files:
+          - $all
+          - "!$test"
+        allow:
+          - $gostd
+          - github.com/cheggaaa/pb/v3
+          - github.com/buger/jsonparser
+          - github.com/spf13/pflag
+          - github.com/google/uuid
+          - github.com/cenkalti/backoff
+          - github.com/streadway/amqp
+          - github.com/pressly/goose
+          - github.com/gorilla/mux
+          - github.com/spf13/viper
+          - github.com/lib/pq
+          - github.com/EvgenyRomanov/sql-migrator/internal/database
+          - github.com/EvgenyRomanov/sql-migrator/internal/logger
+          - github.com/EvgenyRomanov/sql-migrator/internal/parser
+      Test:
+        files:
+          - $test
+        allow:
+          - $gostd
+          - github.com/stretchr/testify
+          - github.com/google/uuid
+          - github.com/golang/protobuf/ptypes/timestamp
+          - github.com/lib/pq
+          - github.com/pressly/goose
+          - github.com/gorilla/mux
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - errcheck
+        - dupl
+        - gocyclo
+        - gosec
+  exclude-dirs:
+    - ../../../../go
+    - ../../../../../../opt/hostedtoolcache/go
+
+linters:
+  disable-all: true
+  enable:
+    - asciicheck
+    - depguard
+    - dogsled
+    - dupl
+    - bodyclose
+    - durationcheck
+    - errorlint
+    - exhaustive
+    - funlen
+    - gci
+    - gocognit
+    - goconst
+    - gocritic
+    - gocyclo
+    - godot
+    - gofmt
+    - gofumpt
+    - goheader
+    - goprintffuncname
+    - gosec
+    - gosimple
+    - govet
+    - importas
+    - ineffassign
+    - lll
+    - makezero
+    - misspell
+    - nestif
+    - nilerr
+    - noctx
+    - nolintlint
+    - prealloc
+    - predeclared
+    - revive
+    - staticcheck
+    - stylecheck
+    - tagliatelle
+    - typecheck
+    - thelper
+    - unconvert
+    - unparam
+    - unused
+    - whitespace

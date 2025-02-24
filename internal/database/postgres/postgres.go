@@ -5,18 +5,17 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"github.com/EvgenyRomanov/sql-migrator/internal/database"
 	"io"
 	"strings"
 	"time"
 
+	"github.com/EvgenyRomanov/sql-migrator/internal/database"
 	// Dynamic build.
 	_ "github.com/lib/pq"
 )
 
 // DefaultLockID Postgres lock mechanism based on pg_try_advisory_lock.
-// crc64.Checksum([]byte("sql-migrator"), crc64.MakeTable(crc64.ECMA)).
-const DefaultLockID int64 = 13180031780204815852
+const DefaultLockID int64 = 123456789123456
 
 type Postgres struct {
 	db        *sql.DB
