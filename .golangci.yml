@@ -49,8 +49,8 @@ issues:
         - gocyclo
         - gosec
   exclude-dirs:
-    - ../../../../go
-    - ../../../../../../opt/hostedtoolcache/go
+    - ../../../go
+    - ../../../../../opt/hostedtoolcache/go
 
 linters:
   disable-all: true
