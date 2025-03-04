@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/EvgenyRomanov/sql-migrator/internal/cli"
 	"os"
+
+	"github.com/EvgenyRomanov/sql-migrator/internal/cli"
 )
 
 func main() {

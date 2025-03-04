@@ -4,11 +4,12 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"os"
+
 	"github.com/EvgenyRomanov/sql-migrator/internal/cli/command"
 	"github.com/EvgenyRomanov/sql-migrator/internal/cli/config"
 	"github.com/EvgenyRomanov/sql-migrator/internal/logger"
 	"github.com/EvgenyRomanov/sql-migrator/pkg/core"
-	"os"
 )
 
 func initFlags() {
@@ -116,7 +117,7 @@ func Main() {
 	err = cmd.Run(args[2:])
 
 	if errors.Is(err, core.ErrAlreadyUpToDate) || errors.Is(err, core.ErrNoAvailableMigrations) {
-		logger.Info(err.Error())
+		logger.Info("%s", err.Error())
 	} else if err != nil {
 		logger.Error("Error executing CLI: %s\n", err.Error())
 		logger.Info("Try 'gomigrator help' for more information.")

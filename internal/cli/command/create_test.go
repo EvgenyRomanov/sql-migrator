@@ -2,13 +2,14 @@ package command
 
 import (
 	"fmt"
-	"github.com/EvgenyRomanov/sql-migrator/internal/cli/config"
-	"github.com/EvgenyRomanov/sql-migrator/internal/logger"
 	"io"
 	"os"
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/EvgenyRomanov/sql-migrator/internal/cli/config"
+	"github.com/EvgenyRomanov/sql-migrator/internal/logger"
 )
 
 func TestCreate(t *testing.T) {

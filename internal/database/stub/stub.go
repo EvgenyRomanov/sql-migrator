@@ -1,8 +1,9 @@
 package stub
 
 import (
-	"github.com/EvgenyRomanov/sql-migrator/internal/database"
 	"io"
+
+	"github.com/EvgenyRomanov/sql-migrator/internal/database"
 )
 
 type Stub struct {

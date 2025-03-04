@@ -3,13 +3,14 @@ package command
 import (
 	"errors"
 	"fmt"
-	"github.com/EvgenyRomanov/sql-migrator/internal/cli/config"
-	"github.com/EvgenyRomanov/sql-migrator/internal/logger"
 	"html/template"
 	"os"
 	"path/filepath"
 	"strings"
 	"time"
+
+	"github.com/EvgenyRomanov/sql-migrator/internal/cli/config"
+	"github.com/EvgenyRomanov/sql-migrator/internal/logger"
 )
 
 var ErrMissingName = errors.New("no migration name was set")
@@ -36,7 +37,7 @@ func (c *Create) create(name string) error {
 	filename := fmt.Sprintf("%v.sql", fullName)
 
 	// Define template.
-	var tmpl = sqlMigrationTemplate
+	tmpl := sqlMigrationTemplate
 
 	// Try to create path.
 	err := os.MkdirAll(c.Cfg.Dir, 0o755)

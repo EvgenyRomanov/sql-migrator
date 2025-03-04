@@ -2,9 +2,10 @@ package command
 
 import (
 	"errors"
+	"os"
+
 	"github.com/EvgenyRomanov/sql-migrator/pkg/core"
 	"github.com/jedib0t/go-pretty/v6/table"
-	"os"
 )
 
 var ErrGeneralError = errors.New("unable to show status table")

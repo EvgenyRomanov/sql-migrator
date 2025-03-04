@@ -1,9 +1,10 @@
 package core
 
 import (
+	"testing"
+
 	_ "github.com/EvgenyRomanov/sql-migrator/internal/database/stub"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 var testMigrator *Migrate
