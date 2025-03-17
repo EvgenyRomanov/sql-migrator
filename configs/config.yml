@@ -1,0 +1,7 @@
+migrator:
+  dsn: postgresql://postgres:postgres@localhost:5432/gomigrator?sslmode=disable
+  dir: ./migrations
+  table_name: migrations
+
+logger:
+  level: INFO

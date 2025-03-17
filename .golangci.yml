@@ -29,6 +29,13 @@ linters-settings:
           - github.com/EvgenyRomanov/sql-migrator/internal/database
           - github.com/EvgenyRomanov/sql-migrator/internal/logger
           - github.com/EvgenyRomanov/sql-migrator/internal/parser
+          - github.com/EvgenyRomanov/sql-migrator/internal/cli/command
+          - github.com/EvgenyRomanov/sql-migrator/internal/cli/config
+          - github.com/EvgenyRomanov/sql-migrator/pkg/core
+          - github.com/EvgenyRomanov/sql-migrator/internal/cli
+          - github.com/jedib0t/go-pretty/v6/table
+          - github.com/EvgenyRomanov/sql-migrator/internal/logger
+          - github.com/EvgenyRomanov/sql-migrator/internal/database/stub
       Test:
         files:
           - $test
@@ -40,6 +47,9 @@ linters-settings:
           - github.com/lib/pq
           - github.com/pressly/goose
           - github.com/gorilla/mux
+          - github.com/EvgenyRomanov/sql-migrator/internal/cli/config
+          - github.com/EvgenyRomanov/sql-migrator/internal/logger
+          - github.com/EvgenyRomanov/sql-migrator/internal/database/stub
 issues:
   exclude-rules:
     - path: _test\.go
