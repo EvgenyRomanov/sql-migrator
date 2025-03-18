@@ -14,3 +14,15 @@ services:
       - "5432:5432"
     healthcheck:
       test: pg_isready -U postgres
+
+  app:
+    build:
+      dockerfile: ./build/Dockerfile
+      context: '../'
+      args:
+        - BIN=./bin/gomigrator
+    volumes:
+      - ./migrations:/usr/bin/migrations
+    depends_on:
+      db:
+        condition: service_healthy
